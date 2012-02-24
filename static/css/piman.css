@@ -1,0 +1,17 @@
+body {
+  background-color: #FFFFEE;
+}
+
+div.block {
+  border: 1px solid black;
+  padding: 1em;
+  margin: 1em
+}
+table {
+  width: 100%;
+}
+th, td{
+  border: 1px solid black;
+  padding: 0.5em
+}
+

@@ -1,0 +1,16 @@
+{% include 'header.html' %}
+
+{% if pi %}
+
+  {% include 'pis/pi_info.html' %}
+
+  {% include 'pis/students.html' %}
+  {% include 'pis/teaching.html' %}
+  {% include 'pis/grants.html' %}
+  {% include 'pis/publications.html' %}
+
+{% else %}
+    <p>No PI information found</p>
+{% endif %}
+
+{% include 'footer.html' %}

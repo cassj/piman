@@ -1,0 +1,16 @@
+[
+  {
+    "model" : "acad_year.AcademicYear",
+    "pk": 1,
+    "fields": {
+      "term1_start" : "2011-09-26",
+      "term1_end"   : "2011-12-16",
+      "term2_start" : "2012-01-09",
+      "term2_end"   : "2012-03-30",
+      "term3_start" : "2012-04-23",
+      "term3_end"   : "2012-06-01",
+      "notes"       : "King's College London term dates 2011-12"
+    }
+
+  }
+]

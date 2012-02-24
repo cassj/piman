@@ -1,0 +1,10 @@
+{% include 'header.html' %}
+
+{% if manager %}
+    <h2>Home page for {{manager.user.username}}</h2>
+{% else %}
+    <p>No Manager information found</p>
+{% endif %}
+
+{% include 'footer.html' %}
+

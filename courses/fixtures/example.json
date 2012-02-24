@@ -1,0 +1,41 @@
+[
+  { 
+    "model"  : "courses.Module",
+    "pk"     : 1,
+    "fields" : {
+      "name"        : "test module",
+      "description" : "this is a test",
+      "notes"       : "blah, blah, blah",
+      "code"        : "AB123"
+    }
+  },
+  {
+    "model"  : "courses.Course",
+    "pk"     : 1,
+    "fields" : {
+      "name"        : "Test Course",
+      "description" : "This is a test",
+      "notes"       : "blah, blah, blah"
+    } 
+  },
+  {
+    "model"  : "courses.CourseYear",
+    "pk"     : 1,
+    "fields" : {
+      "course"        : 1,
+      "year"          : 1,
+      "organisers"     : [1]
+     }
+  },
+  {
+    "model"  : "courses.CourseModule",
+    "pk"     : 1,
+    "fields" : {
+       "module"     : 1,
+       "course"     : 1,
+       "year"       : 1,
+       "start_date" : "2012-01-10",
+       "end_date"   : ""
+    }
+  }
+]
