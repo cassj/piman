@@ -1,0 +1,64 @@
+<form action="/project/create" method="post">{% csrf_token %}
+<!-- This isn't enough - need to add the create links for the many to many students
+     relationship. Also need to set the PI to the current user. If the current user
+     is a manager, they should be able to select the PI and create a new one.
+ -->
+{{ form.non_field_errors }}
+
+  <div class="fieldWrapper">
+    {{ form.name.errors }}
+    <label for="id_name">Name:</label>
+    {{ form.name }}
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.description.errors }}
+    <label for="id_description">Description:</label>
+    {{ form.description }}
+  </div>
+
+  <!-- Should these just be dates? Or does everyone have the same deadlines
+       in an academic year?
+   -->
+  <div class="fieldWrapper">
+    {{ form.start_year.errors }}
+    <label for="id_start_year">Start Year:</label>
+    {{ form.start_year }}
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.end_year.errors }}
+    <label for="id_end_year">End Year:</label>
+    {{ form.end_year }}
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.notes.errors }}
+    <label for="id_notes">Notes:</label>
+    {{ form.notes }}
+  </div> 
+
+
+  <!-- Mangers should be able to select and create supervisors -->
+  <div class="fieldWrapper">
+    {{ form.supervisors.errors }}
+    <label for="id_supervisors">Supervisors:</label>
+    {{ form.supervisors }}
+  <div> 
+  
+  <!-- PIs should be able to select and create students -->
+  <div class="fieldWrapper">
+    {{ form.students.errors }}
+    <label for="id_students">Students:</label>
+    {{ form.students }}
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.tags.errors }}
+    <label for="id_tags">Tags:</label>
+    {{ form.tags }}
+  </div>
+
+<input type="submit" value="Submit" />
+</form>
+

@@ -1,4 +1,32 @@
 <div id="teaching_block_{{pi.id}}" class="teaching_block, block">
-  <h1>Teaching<h1>
+  <h1>Teaching Committments
+
+<!-- Still to do - flag course and module somehow if the 
+     PI is an organiser. 
+
+     Link course name and module name to course or module 
+     page.
+
+     Add a link to create a new teaching commitment
+
+ -->
+
+    <table>
+      <tr>
+          <th>Course Name</th>
+          <th>Module Name</th>
+          <th>Contact Hours</th>
+          <th>Notes</th>
+      </tr>
+     {% for tc in teaching_commitments %}
+      <tr>
+          <td>{{tc.course_module.course.name}}</td>
+          <td>{{tc.course_module.module.name}}</td>
+          <td>{{tc.contact_hours}}</td>
+          <td>{{tc.notes}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
 
 </div>

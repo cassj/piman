@@ -4,14 +4,20 @@ body {
 
 div.block {
   border: 1px solid black;
-  padding: 1em;
+  padding: 0.2em;
   margin: 1em
+}
+div.block h1 {
+  font-size: medium;
+}
+div.block h2 {
+  font-size: small;
 }
 table {
   width: 100%;
 }
 th, td{
   border: 1px solid black;
-  padding: 0.5em
+  padding: 0.2em
 }
 

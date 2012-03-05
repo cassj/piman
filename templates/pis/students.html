@@ -1,6 +1,5 @@
 <div id="student_block_{{pi.id}}" class="student_block, block">
-  <h1>Students</h1>
-  {% for project in pi.projects.all %}
+  <h1>Student Projects</h1>
     <table>
       <tr>
           <th>Name</th>
@@ -9,6 +8,7 @@
           <th>End Year</th>
           <th>Students</th>
       </tr>
+      {% for project in projects %}
       <tr>
           <td>{{project.name}}</td>
           <td>{{project.description}}</td>
@@ -16,6 +16,6 @@
           <td>{{project.end_year}}</td>
           <td>{% for student in project.students.all %}{{student.name}} ({{student.level}} candidate) {% endfor%}</td>
       </tr>
+      {% endfor %}
     </table>
-  {% endfor %}
 </div>

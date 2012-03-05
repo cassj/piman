@@ -15,15 +15,33 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
-     url(r'^pi/(?P<pi_id>\d+)/$', 'pis.views.pi_home'),
-     url(r'manager/(?P<manager_id>\d+)$','pis.views.manager_home')
+    url(r'^accounts/login','django.contrib.auth.views.login'),
+    url(r'^accounts/logout','django.contrib.auth.views.logout'),
+    url(r'^accounts/register','pis.views.register'), 
+    url(r'^accounts/profile','pis.views.profile'),
 
-#    url(r'^pi/(?P<pi_id>\d+)/grants/?$', 'grants.views.grants_by_piid')
-#    url(r'^pi/(?P<pi_id>\d+)/publication/?$', 'publications.views.pubs_by_piid')
-#    url(r'^pi/(?P<pi_id>\d+)/students/?$', 'students.views.students_by_piid')
-#    url(r'^pi/(?P<pi_id>\d+)/courses/?$', 'courses.views.teaching_by_piid')
-#    url(r'^pi/(?P<pi_id>\d+)/projects/?$', 'projects.views.projects_by_piid')
+    url(r'^pi/(?P<pi_id>\d+)/$', 'pis.views.pi_home'),
+    url(r'manager/(?P<manager_id>\d+)$','pis.views.manager_home'),
 
+#    url(r'^pi/(?P<pi_id>\d+)/grants/$', 'grants.views.grants_by_piid')
+#    url(r'^pi/(?P<pi_id>\d+)/publication/$', 'publications.views.pubs_by_piid')
+#    url(r'^pi/(?P<pi_id>\d+)/students/$', 'students.views.students_by_piid')
+#    url(r'^pi/(?P<pi_id>\d+)/courses/$', 'courses.views.teaching_by_piid')
+#    url(r'^pi/(?P<pi_id>\d+)/projects/$', 'projects.views.projects_by_piid')
 
+    # CRUD 
+    # Student projects 
+    url(r'^student/create', 'students.views.student_create'),
+    url(r'^study_level/create', 'students.views.study_level_create'),
+    url(r'^project/create', 'students.views.project_create'),
+    url(r'^project_pi/create', 'students.views.project_pi_create'),
+    url(r'^milestone/create', 'students.views.milestone_create'),
+
+    url(r'^student/(?P<student_id>\d+)/edit$', 'students.views.student_edit'),
+    url(r'^study_level/(?P<study_level_id>\d+)/edit$', 'students.views.study_level_edit'),
+    url(r'^project/(?P<project_id>\d+)/edit$', 'students.views.project_edit'),
+    url(r'^project_pi/(?P<project_pi_id>\d+)/edit$', 'students.views.project_pi_edit'),
+    url(r'^milestone/(?P<milestone_id>\d+)/edit$', 'students.views.milestone_edit'),
+ 
 
 )

@@ -2,4 +2,21 @@
 
   <h1>Publications</h1>
 
+    <table>
+      <tr>
+          <th>Title</th>
+          <th>Journal</th>
+          <th>Publication Date</th>
+          <th>Author Rank</th>
+      </tr>
+      {% for p in publications %}
+      <tr>
+          <td>{{p.paper}}</td>
+          <td>{{p.paper.journal}}</td>
+          <td>{{p.paper.publication_date}}</td>
+          <td>{{p.rank}}</td>
+      </tr>
+      {% endfor %}
+
+
 </div>

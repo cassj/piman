@@ -4,19 +4,19 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Cass Johnston (BRC-MH Bioinformatics Core', 'caroline.johnston@kcl.ac.uk'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'piman',                      # Or path to database file if using sqlite3.
-        'USER': 'piman',                      # Not used with sqlite3.
-        'PASSWORD': '*******',                  # Not used with sqlite3.
-        'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE'  : 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME'    : 'piman',                    # Or path to database file if using sqlite3.
+        'USER'    : 'piman',                    # Not used with sqlite3.
+        'PASSWORD': 'piman',                    # Not used with sqlite3.
+        'HOST'    : '127.0.0.1',                # Set to empty string for localhost. Not used with sqlite3.
+        'PORT'    : '',                         # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -69,9 +69,9 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    ('css', "/home/cassj/django/piman/static/css"),
+    ('images', '/home/cassj/django/piman/static/images'),
+    ('js', '/home/cassj/django/piman/static/js')
 )
 
 # List of finder classes that know how to find static files in
@@ -83,7 +83,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '*************'
+SECRET_KEY = '1234567890'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -106,7 +106,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/var/www/django/piman/templates'
+    '/home/cassj/django/piman/templates'
 )
 
 INSTALLED_APPS = (
@@ -119,8 +119,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs'  
+    'django.contrib.admindocs',  
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     'taggit',
 
@@ -132,15 +133,6 @@ INSTALLED_APPS = (
     'publications' 
 )
 
-
-# by default the 'static' dirs in your INSTALLED_APPS are searched
-# This allows you to add other static locations
-# see https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = (
-    ('css', "/var/www/django/piman/static/css"),
-    ('images', '/var/www/django/piman/static/images'),
-    ('js', '/var/www/django/piman/static/js')
-)
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
