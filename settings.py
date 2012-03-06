@@ -14,7 +14,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'piman',                      # Or path to database file if using sqlite3.
         'USER': 'piman',                      # Not used with sqlite3.
-        'PASSWORD': '*******',                  # Not used with sqlite3.
+        'PASSWORD': 'K1ng5BRC321',                  # Not used with sqlite3.
         'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -83,7 +83,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '*************'
+SECRET_KEY = '-r8abuhoh8t9ueysyjcq3-oql&&nh^q!2i$endp+mo4p$i#osw'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
