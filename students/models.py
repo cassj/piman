@@ -29,7 +29,7 @@ class Project(models.Model):
    students     = models.ManyToManyField(Student, blank=True, related_name="projects")
    notes        = models.TextField(blank=True)
 
-   tags         = TaggableManager()
+   tags         = TaggableManager(blank=True)
 
    def __unicode__(self):
       return self.name
@@ -40,9 +40,9 @@ class Milestone(models.Model):
    description    = models.TextField()
    notes          = models.TextField(blank=True)
    due_date       = models.DateField()
-   complete_date  = models.DateField()
+   complete_date  = models.DateField(blank=True, null=True)
 
-   tags           = TaggableManager()
+   tags           = TaggableManager(blank=True)
 
    def __unicode__(self):
       return self.name

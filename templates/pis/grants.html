@@ -1,5 +1,65 @@
+{% load humanize %}
+
 <div id="grants_{{pi.id}}" class="grants_block, block">
 
   <h1>Grants</h1>
+
+  <h2>Current Submissions</h2>
+    <table>
+      <tr>
+          <th>Call</th>
+          <th>Awarding Body</th>
+          <th>Title</th>
+          <th>Abstract</th>
+          <th>Decision Date</th>
+          <th>Est. Start Date</th>
+          <th>Est. End Date</th>
+          <th>fEC</th>
+          <th>Funder Contribution</th>
+          <th>Percentage Split</th>
+      </tr>
+      {% for a in submitted_applications %}
+      <tr>
+          <td>{{a.submitted_grant.grant.title}}</td>
+          <td>{{a.submitted_grant.grant.awarding_body}}</td>
+          <td>{{a.submitted_grant.title}}</td>
+          <td>{{a.submitted_grant.abstract}}</td>
+          <td>{{a.submitted_grant.decision_date|date:"SHORT_DATE_FORMAT"}}</td>
+          <td>{{a.submitted_grant.estimated_start_date|date:"SHORT_DATE_FORMAT"}}</td>
+          <td>{{a.submitted_grant.estimated_end_date|date:"SHORT_DATE_FORMAT"}}</td>
+          <td>£{{a.submitted_grant.fEC|intcomma}}</td>
+          <td>£{{a.submitted_grant.funder_contribution|intcomma}}</td>
+          <td>{{a.percentage_split}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+ <h2>Current Awards</h2>
+    <table>
+      <tr>
+          <th>Call</th>
+          <th>Awarding Body</th>
+          <th>Title</th>
+          <th>Abstract</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>fEC</th>
+          <th>Funder Contribution</th>
+          <th>Percentage Split</th>
+      </tr>
+     {% for a in awarded_applications %}
+      <tr>
+          <td>{{a.submitted_grant.title}}</td>
+          <td>{{a.submitted_grant.grant.awarding_body}}</td>
+          <td>{{a.submitted_grant.title}}</td>
+          <td>{{a.submitted_grant.abstract}}</td>
+          <td>{{a.submitted_grant.award.start_date|date:"SHORT_DATE_FORMAT"}}</td>
+          <td>{{a.submitted_grant.award.end_date|date:"SHORT_DATE_FORMAT"}}</td>
+          <td>£{{a.submitted_grant.fEC|intcomma}}</td>
+          <td>£{{a.submitted_grant.funder_contribution|intcomma}}</td>
+          <td>{{a.percentage_split}}</td>
+      </tr>
+      {% endfor %}
+    </table>
 
 </div>

@@ -26,7 +26,7 @@ class Rank(models.Model):
     return self.name
 
 class PI(models.Model):
-   user        = models.ForeignKey('auth.User')
+   user        = models.OneToOneField('auth.User', related_name="pi")
    title       = models.CharField(max_length=4, choices=TITLE_CHOICES)
    rank        = models.ForeignKey(Rank)
    telephone   = models.CharField(max_length=30)
@@ -36,9 +36,10 @@ class PI(models.Model):
 
 
 class Manager(models.Model):
-    user       = models.ForeignKey('auth.User')
+    user       = models.OneToOneField('auth.User', related_name="manager")
 
     def __unicode__(self):
       return self.user.username
 
-  
+
+

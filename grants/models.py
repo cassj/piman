@@ -25,16 +25,6 @@ class Grant(models.Model):
       return self.title
 
 
-# remodel this as manytomany wth submitted grant and user with intermediate table,
-#class Applicant(models.Model):
-#   user             = models.ForeignKey('auth.User')
-#   grant            = models.ForeignKey(SubmittedGrant)
-#   percentage_split = models.DecimalField(max_digits=5,decimal_places=2)
-#
-#   def __unicode__(self):
-#      return self.question
-#
-
 class SubmittedGrant(models.Model):
    grant                = models.ForeignKey(Grant)
    title                = models.TextField()
@@ -42,32 +32,30 @@ class SubmittedGrant(models.Model):
    decision_date        = models.DateField()
    estimated_start_date = models.DateField()
    estimated_end_date   = models.DateField()
-   total_value          = models.DecimalField(max_digits=10, decimal_places=2)
+   funder_contribution  = models.DecimalField(max_digits=10, decimal_places=2)
    fEC                  = models.DecimalField("Full Economic Cost", max_digits=10, decimal_places=2)
-#   applications         = models.ManyToManyField(Applicant)
+   applicants           = models.ManyToManyField('pis.PI', through='Applicant', related_name='submitted_grants')
    
    def __unicode__(self):
       return self.grant.title
 
-# remodel this as manytomany wth submitted grant and user with intermediate table,
 class Applicant(models.Model):
-   user             = models.ForeignKey('auth.User')
-   grant            = models.ForeignKey(SubmittedGrant)
+   pi               = models.ForeignKey('pis.PI', related_name='applications')
+   submitted_grant  = models.ForeignKey(SubmittedGrant)
    percentage_split = models.DecimalField(max_digits=5,decimal_places=2)
-
-   def __unicode__(self):
-      return self.question
-
-
 
 
 class AwardedGrant(models.Model):
-   submission    = models.ForeignKey(SubmittedGrant)
-   start_date     = models.DateField()
-   end_date       = models.DateField()
+   submitted_grant  = models.OneToOneField(SubmittedGrant, related_name='award')
+   start_date       = models.DateField()
+   end_date         = models.DateField()
+   awarded_value    = models.DecimalField(max_digits=10, decimal_places=2)
+
 
    def __unicode__(self):
       return self.question
+
+   
 
 
 # maybe need to add more stuff for tracking awarded grants, cost codes, spending etc?

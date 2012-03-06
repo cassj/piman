@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Don't have an account? <a href="register">Register as a new user</a></p>
+
+<form action="" method="post">{% csrf_token %}
+
+{{ form.non_field_errors }}
+
+  <div class="fieldWrapper">
+    {{ form.username.errors }}
+    <label for="id_username">Username:</label>
+    {{ form.username }}
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.password.errors }}
+    <label for="id_password">Password:</label>
+    {{ form.password }}
+  </div>
+
+   <input type="submit" value="login" />
+
+   <!-- where to go after login. Can also be passed as a url parameter -->
+   <input type="hidden" name="next" value="{{ next|escape }}" />
+</form>
+
+{% endblock %}

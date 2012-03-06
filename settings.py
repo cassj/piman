@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Cass Johnston (BRC-MH Bioinformatics Core', 'caroline.johnston@kcl.ac.uk'),
 )
 
 MANAGERS = ADMINS
@@ -69,9 +69,9 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    ('css', "/var/www/django/piman/static/css"),
+    ('images', '/var/www/django/piman/static/images'),
+    ('js', '/var/www/django/piman/static/js')
 )
 
 # List of finder classes that know how to find static files in
@@ -119,8 +119,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs'  
+    'django.contrib.admindocs',  
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     'taggit',
 
@@ -132,15 +133,6 @@ INSTALLED_APPS = (
     'publications' 
 )
 
-
-# by default the 'static' dirs in your INSTALLED_APPS are searched
-# This allows you to add other static locations
-# see https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = (
-    ('css', "/var/www/django/piman/static/css"),
-    ('images', '/var/www/django/piman/static/images'),
-    ('js', '/var/www/django/piman/static/js')
-)
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

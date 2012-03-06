@@ -1,4 +1,4 @@
-/** 
+/**
 
     Cass Johnston (cassjohnston@gmail.com) 2012-02-12
 
@@ -114,6 +114,10 @@ insert into pis_pi(id, user_id, title, rank_id, telephone) values (5,9,'DR',1, '
 insert into auth_user_groups(id, user_id, group_id) values (10,9,3);
 insert into auth_user_groups(id, user_id, group_id) values (11,9,4);
 
+/* PIna - A PI whose account is not active */
+insert into auth_user (id, username, first_name, last_name, email, password, is_staff, is_active, is_superuser, date_joined, last_login) values (10,'pi_na','PI','NA', 'comp-bio@kcl.ac.uk', django_password('password'), 0,0,0,NOW(),NOW());
+
+
 /* Academic calendar */
 insert into acad_year_academicyear (id, term1_start, term1_end, term2_start, term2_end, term3_start, term3_end,notes) values (1, '2012-01-01 00:00:00', '2012-03-01 00:00:00', '2012-04-01 00:00:00', '2012-06-01 00:00:00', '2012-07-01 00:00:00', '2012-09-01 00:00:00', '');
 insert into acad_year_academicyear (id, term1_start, term1_end, term2_start, term2_end, term3_start, term3_end,notes) values (2, '2013-01-01 00:00:00', '2013-03-01 00:00:00', '2013-04-01 00:00:00', '2013-06-01 00:00:00', '2013-07-01 00:00:00', '2013-09-01 00:00:00', '');
@@ -139,5 +143,63 @@ insert into students_projectpi(id, project_id, pi_id, percentage, notes) values 
 insert into students_projectpi(id, project_id, pi_id, percentage, notes) values (2,2,2,50,'');
 insert into students_projectpi(id, project_id, pi_id, percentage, notes) values (3,2,4,50,'');
 
+
 /* Create some teaching responsibilities*/
+insert into courses_course(id, name, description,notes) values (1,'courseA', 'This is a test course', 'blah blah blah');
+insert into courses_course(id, name, description,notes) values (2,'courseB', 'This is a test course', 'blah blah blah');
+
+insert into courses_module(id, name, description, notes, code) values (1, 'moduleA', 'test module', 'some notes about moduleA', '12345');
+insert into courses_module(id, name, description, notes, code) values (2, 'moduleB', 'test module', 'some notes about moduleB', 'ABC123');
+
+insert into courses_courseyear(id, course_id, year_id) values (1,1,1);
+insert into courses_courseyear(id, course_id, year_id) values (2,1,2);
+insert into courses_courseyear(id, course_id, year_id) values (3,2,1);
+
+insert into courses_coursemodule(id, module_id, course_id, year_id, start_date, end_date) values (1,1,1,1,'2012-03-01', '2012-06-01');
+insert into courses_coursemodule(id, module_id, course_id, year_id, start_date, end_date) values (2,1,2,1,'2012-03-01', '2012-06-01');
+insert into courses_coursemodule(id, module_id, course_id, year_id, start_date, end_date) values (3,2,1,1,'2012-04-01','2012-06-01');
+
+insert into courses_teachingcommitment (id, course_module_id, pi_id, contact_hours, notes) values (1,1,1,5,'some lectures about stuff');
+insert into courses_teachingcommitment (id, course_module_id, pi_id, contact_hours, notes) values (2,2,1,7, 'more lectures about stuff');
+insert into courses_teachingcommitment (id, course_module_id, pi_id, contact_hours, notes) values (3,1,2,4,'other lectures about other stuff');
+
+/* Create some publications  */
+
+insert into publications_journal (id, title, description) values (1, 'Journal of Stuff', 'this is a journal about stuff');
+insert into publications_journal (id, title, description) values (2, 'Journal of Other Stuff', 'this is another journal about stuff');
+
+insert into publications_author(id, initials, surname, pi_id) values (1,'J', 'Bloggs',NULL);
+insert into publications_author(id, initials, surname, pi_id) values (2, 'A', 'Smith', NULL);
+insert into publications_author(id, initials, surname, pi_id) values (3,'PI', 'A1', 1);
+
+
+insert into publications_paper(id, title, abstract,journal_id, publication_date, number_of_citations,doi) values (1,'this is a paper about stuff', 'blah blah blah blah', 1, '2010-04-28', 5, '');
+insert into publications_paper(id, title, abstract,journal_id, publication_date, number_of_citations, doi) values (2, 'another paper about stuff', 'blah blah blah blah', 2, '2011-12-01', 15, '');
+
+insert into publications_publication(id, paper_id, author_id, rank) values (1,1,1,1);
+insert into publications_publication(id, paper_id, author_id, rank) values (2,1,2,2);
+insert into publications_publication(id, paper_id, author_id, rank) values (3,1,3,3);
+
+insert into publications_publication(id, paper_id, author_id, rank) values (4,2,3,1);
+
+
+/* Create some grants */
+
+insert into grants_awardingbody (id, name, description) values (1,'MRC', 'Medical Research Council');
+insert into grants_awardingbody (id, name, description) values (2, 'BBSRC', 'Biotechnology and Biological Sciences Research Centre');
+
+insert into grants_grant (id, title, description, awarding_body_id) values (1,'Some grant call title', 'A description of the cal', 1);
+insert into grants_grant(id, title, description, awarding_body_id) values (2, 'Some other grant call title', 'A description of the call', 1);
+insert into grants_grant(id, title, description, awarding_body_id) values (3, 'Yet another grant call title', 'blah blah blah',2);
+
+
+insert into grants_submittedgrant(id, grant_id, title, abstract, decision_date, estimated_start_date, estimated_end_date, funder_contribution, fEC) values (1,1,'this is a grant title', 'blah blah blah', '2011-01-01', '2011-06-01', '2015-06-01', 100000, 100000);
+insert into grants_submittedgrant(id, grant_id, title, abstract, decision_date, estimated_start_date, estimated_end_date, funder_contribution, fEC) values (2,2, 'this is another grant title', 'blah blah blah', '2012-03-01', '2012-05-01', '2014-05-01', 250000,250000);
+
+insert into grants_applicant(id, pi_id, submitted_grant_id, percentage_split) values (1,1,1,100);
+insert into grants_applicant(id, pi_id, submitted_grant_id, percentage_split) values (2,1,2,50);
+insert into grants_applicant(id, pi_id, submitted_grant_id, percentage_split) values (3,2,2,50);
+
+insert into grants_awardedgrant(id,submitted_grant_id, start_date, end_date, awarded_value) values (1, 1, '2012-05-01', '2012-06-01', '250000');
+
 
