@@ -14,12 +14,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE'  : 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME'    : 'piman',                    # Or path to database file if using sqlite3.
-        'USER'    : 'piman',                    # Not used with sqlite3.
-        'PASSWORD': 'piman',                    # Not used with sqlite3.
-        'HOST'    : '127.0.0.1',                # Set to empty string for localhost. Not used with sqlite3.
-        'PORT'    : '',                         # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'piman',                      # Or path to database file if using sqlite3.
+        'USER': 'piman',                      # Not used with sqlite3.
+        'PASSWORD': 'piman',                  # Not used with sqlite3.
+        'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -72,9 +72,9 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    ('css', "/home/cassj/django/piman/static/css"),
-    ('images', '/home/cassj/django/piman/static/images'),
-    ('js', '/home/cassj/django/piman/static/js')
+    ('css', "/var/www/django/piman/static/css"),
+    ('images', '/var/www/django/piman/static/images'),
+    ('js', '/var/www/django/piman/static/js')
 )
 
 # List of finder classes that know how to find static files in
@@ -86,7 +86,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '1234567890'
+SECRET_KEY = '-r8abuhoh8t9ueysyjcq3-oql&&nh^q!2i$endp+mo4p$i#osw'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -106,11 +106,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'piman.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    os.path.join(os.path.dirname(__file__), "templates"),
-    #'/home/cassj/django/piman/templates'
+    os.path.join(DIRNAME, "templates"),
 )
 
 INSTALLED_APPS = (
