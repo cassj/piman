@@ -21,3 +21,13 @@ th, td{
   padding: 0.2em
 }
 
+/* for ajax forms */
+.error
+{
+color: red;
+}
+.success
+{
+font-weight: bold;
+}
+

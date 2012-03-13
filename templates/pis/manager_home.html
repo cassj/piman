@@ -1,10 +1,12 @@
-{% include 'header.html' %}
+{% extends 'base.html' %}
 
-{% if manager %}
+{% block body_content %}
+
+  {% if manager %}
     <h2>Home page for {{manager.user.username}}</h2>
-{% else %}
+  {% else %}
     <p>No Manager information found</p>
-{% endif %}
+  {% endif %}
 
-{% include 'footer.html' %}
+{% endblock body_content %}
 

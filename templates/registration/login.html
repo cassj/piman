@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block body_content %}
 
 <p>Don't have an account? <a href="register">Register as a new user</a></p>
 
@@ -26,4 +26,4 @@
    <input type="hidden" name="next" value="{{ next|escape }}" />
 </form>
 
-{% endblock %}
+{% endblock body_content %}

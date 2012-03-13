@@ -6,7 +6,6 @@ from django.forms import ModelForm
 from datetime import datetime
 from students.models import *
 
-
 class StudyLevelForm(ModelForm):
   class Meta:
     model = StudyLevel

@@ -20,14 +20,12 @@ urlpatterns = patterns('',
     url(r'^accounts/register','pis.views.register'), 
     url(r'^accounts/profile','pis.views.profile'),
 
-    url(r'^pi/(?P<pi_id>\d+)/$', 'pis.views.pi_home'),
-    url(r'manager/(?P<manager_id>\d+)$','pis.views.manager_home'),
+    url(r'grants', 'grants.views.manage'),
+    url(r'publications','publications.views.manage'),
+    url(r'students', 'students.views.manage'),
+    url(r'courses', 'courses.views.manage'),
+    url(r'projects', 'projects.views.manage'),
 
-#    url(r'^pi/(?P<pi_id>\d+)/grants/$', 'grants.views.grants_by_piid')
-#    url(r'^pi/(?P<pi_id>\d+)/publication/$', 'publications.views.pubs_by_piid')
-#    url(r'^pi/(?P<pi_id>\d+)/students/$', 'students.views.students_by_piid')
-#    url(r'^pi/(?P<pi_id>\d+)/courses/$', 'courses.views.teaching_by_piid')
-#    url(r'^pi/(?P<pi_id>\d+)/projects/$', 'projects.views.projects_by_piid')
 
     # CRUD 
     # Student projects 

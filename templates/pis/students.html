@@ -10,11 +10,16 @@
       </tr>
       {% for project in projects %}
       <tr>
-          <td>{{project.name}}</td>
-          <td>{{project.description}}</td>
-          <td>{{project.start_year}}</td>
-          <td>{{project.end_year}}</td>
-          <td>{% for student in project.students.all %}{{student.name}} ({{student.level}} candidate) {% endfor%}</td>
+          <td><span id="project_{{project.id}}_name" class="edit_link">{{project.name}}</span></td>
+          <td><span id="project_{{project.id}}_description" class="edit_link">{{project.description}}</span></td>
+          <td><span id="project_{{project.id}}_start_year" class="edit_link_date">{{project.start_year}}</span></td>
+          <td><span id="project_{{project.id}}_end_year" class="edit_link_date">{{project.end_year}} </span></td>
+          <td>{% for student in project.students.all %}
+                <span id="project_{{project_id}}_student_{{student.id}}" class="edit_link">
+                  {{student.name}} ({{student.level}} candidate)
+                </span>
+              {% endfor%}
+          </td>
       </tr>
       {% endfor %}
     </table>

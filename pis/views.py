@@ -11,34 +11,41 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def profile(request):
 
-   pi = request.user.pi
-   # Have to use RequestContext rather than just Context to get
-   # STATIC_URL working. As we're using this to serve css and js files,
-   # we need to use it for all views.
-   #pi = get_object_or_404(PI, pk=pi_id)
-   projects = pi.projects.all()
+  try:
+    pi = request.user.pi
+    projects = pi.projects.all()
+    teaching_commitments = pi.teaching_commitments.all()   
+    applications = pi.applications.all()
+    submitted_applications = applications.filter(submitted_grant__decision_date__gte=datetime.now())
+    awarded_applications = applications.filter(submitted_grant__award__isnull=False) 
+    try:
+      publications = pi.author.publications.all()
+    except ObjectDoesNotExist:
+      publications = []
 
-   teaching_commitments = pi.teaching_commitments.all()   
+    t = loader.get_template('pis/pi_home.html')
+    c = RequestContext(request, {'pi'                     : pi,
+                                 'projects'               : projects,
+                                 'teaching_commitments'   : teaching_commitments,
+                                 'submitted_applications' : submitted_applications,
+                                 'awarded_applications'   : awarded_applications,
+                                 'publications'           : publications })
 
-   applications = pi.applications.all()
-   submitted_applications = applications.filter(submitted_grant__decision_date__gte=datetime.now())
-   awarded_applications = applications.filter(submitted_grant__award__isnull=False)
-  
-   try:
-     publications = pi.author.publications.all()
-   except ObjectDoesNotExist:
-     publications = []
+    return HttpResponse(t.render(c))
+  except ObjectDoesNotExist:
+    try:
+      manager = request.user.manager
 
+      t = loader.get_template('pis/manager_home.html')
+      c = RequestContext(request,{'manager'                : manager})
+      return HttpResponse(t.render(c))
 
-   t = loader.get_template('pis/pi_home.html')
-   c = RequestContext(request, {'pi'                     : pi,
-                                'projects'               : projects,
-                                'teaching_commitments'   : teaching_commitments,
-                                'submitted_applications' : submitted_applications,
-                                'awarded_applications'   : awarded_applications,
-                                'publications'           : publications })
-
-   return HttpResponse(t.render(c))
+    except ObjectDoesNotExist:
+      # This should probably raise an exception.
+      t = loader.get_template('pis/user_not_found.html')
+      c = RequestContext(request, {})
+      return HttpResponse(t.render(c))
+      
 
 
 @login_required

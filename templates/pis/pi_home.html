@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
-{% block content %}
+
+{% block title %} PI Profile {% endblock title %}
+
+{% block body_header_title %} PI Profile {% endblock body_header_title %}
+
+{% block body_content %}
 
 {% if pi %}
 
@@ -14,4 +19,10 @@
     <p>No PI information found</p>
 {% endif %}
 
-{% endblock %}
+{% endblock body_content %}
+
+{% block footer_javascript_page %}
+<script language="JavaScript" type="text/javascript"
+src="/static/js/pi_home.js"></script>
+{% endblock footer_javascript_page %}
+
