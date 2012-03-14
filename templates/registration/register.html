@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %} Login {% endblock title %}
+{% block title %} Register {% endblock title %}
 
-{% block body_header_title %} Login {% endblock body_header_title %}
+{% block body_header_title %} Regsiter {% endblock body_header_title %}
 
 
 {% block body_main %}
 
-<p>Don't have an account? <a href="register">Register as a new user</a></p>
+<p>Already have an account? <a href="/accounts/login">Login</a></p>
 
 <form action="" method="post">{% csrf_token %}
 
@@ -25,7 +25,13 @@
     {{ form.password }}
   </div>
 
-   <input type="submit" value="login" />
+  <div class="fieldWrapper">
+    {{ form.password2.errors }}
+    <label for="id_password2">Re-enter Password:</label>
+    {{ form.password2 }}
+  </div>
+
+   <input type="submit" value="register" />
 
    <!-- where to go after login. Can also be passed as a url parameter -->
    <input type="hidden" name="next" value="{{ next|escape }}" />

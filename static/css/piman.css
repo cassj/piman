@@ -31,3 +31,9 @@ color: red;
 font-weight: bold;
 }
 
+
+.edit_link
+{
+color:blue;
+cursor: pointer;
+}

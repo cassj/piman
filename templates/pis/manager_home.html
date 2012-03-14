@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block body_content %}
+{% block body_main %}
 
   {% if manager %}
     <h2>Home page for {{manager.user.username}}</h2>
@@ -8,5 +8,5 @@
     <p>No Manager information found</p>
   {% endif %}
 
-{% endblock body_content %}
+{% endblock body_main %}
 

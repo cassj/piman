@@ -10,10 +10,10 @@
       </tr>
       {% for project in projects %}
       <tr>
-          <td><span id="project_{{project.id}}_name" class="edit_link">{{project.name}}</span></td>
-          <td><span id="project_{{project.id}}_description" class="edit_link">{{project.description}}</span></td>
-          <td><span id="project_{{project.id}}_start_year" class="edit_link_date">{{project.start_year}}</span></td>
-          <td><span id="project_{{project.id}}_end_year" class="edit_link_date">{{project.end_year}} </span></td>
+          <td><span onclick="piman_edit('project', {{project.id}})" class="edit_link" >{{project.name}}</span></td>
+          <td>{{project.description}}</span></td>
+          <td>{{project.start_year}}</span></td>
+          <td>{{project.end_year}} </span></td>
           <td>{% for student in project.students.all %}
                 <span id="project_{{project_id}}_student_{{student.id}}" class="edit_link">
                   {{student.name}} ({{student.level}} candidate)
