@@ -1,0 +1,32 @@
+<form action="" method="post">{% csrf_token %}
+
+{{ form.non_field_errors }}
+
+  <div class="fieldWrapper">
+    {{ form.username.errors }}
+    <label for="id_username">Username:</label>
+    {{ form.username }}
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.password.errors }}
+    <label for="id_password">Password:</label>
+    {{ form.password }}
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.password2.errors }}
+    <label for="id_password2">Repeat password:</label>
+    {{ form.password2 }}
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.email.errors }}
+    <label for="id_email">email:</label>
+    {{ form.email }}
+  </div>
+
+   <input type="submit" value="register" />
+
+</form>
+

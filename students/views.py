@@ -5,6 +5,8 @@ from django.core.exceptions import *
 from django.forms import ModelForm
 from datetime import datetime
 from students.models import *
+from functions import *
+import json
 
 class StudyLevelForm(ModelForm):
   class Meta:
@@ -89,7 +91,7 @@ def project_create(request):
                                  'user' : request.user } )
   return HttpResponse(t.render(c))
 
-
+@ajax_login_required
 def project_edit(request, project_id):
   if request.method == 'POST':
     form = ProjectForm(request.POST)
@@ -102,8 +104,13 @@ def project_edit(request, project_id):
 
   t = loader.get_template('students/project_edit.html')
   c = RequestContext(request, {'form' : form, 'id' : project.id } )
-  return HttpResponse(t.render(c))
-
+  html = t.render(c)
+ 
+  # return the html as a json object in data.html
+  # possibly for debugging this should just return the html if a get req.
+  response =  HttpResponse(json.dumps(html), mimetype=u'application/json')
+  return response
+  
 
 
 class MilestoneForm(ModelForm):

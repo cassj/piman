@@ -5,7 +5,36 @@ from django.core.exceptions import *
 from pis.models import Manager,PI
 from datetime import datetime
 from django import forms
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
+from functions import ajax_login_required
+import models
+import json
+import re
+
+#def ajax_login_request(request):
+#
+#  # this is useful for debugging - you can GET the page 
+#  # directly so you see any error messages.
+#  # don't use in production though.
+#  try:
+#    request.POST[u'login']
+#    dictionary = request.POST
+#  except:
+#    dictionary = request
+#
+#  user = authenticate(username = dictionary[u'login'],
+#                      password = dictionary[u'password'])
+#
+#  if user and user.is_active:
+#    login(requst,user)
+#    result = True
+#  else:
+#    result = False
+#
+#  response = HttpResponse(json.dumps(result), mimetype=u'application/json')
+#  return response
 
 
 @login_required

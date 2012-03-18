@@ -1,5 +1,6 @@
 body {
   background-color: #FFFFEE;
+  font-family: Verdana, Arial, sans;
 }
 
 div.block {
@@ -29,6 +30,23 @@ color: red;
 .success
 {
 font-weight: bold;
+}
+
+.overlay{
+  display: none;
+}
+
+#notifications style.cssabout{
+  background-color: #ff8080;
+  border: 3px solid #800000;
+  display: none;
+  padding: 20px; 
+}
+
+#submit{
+  border: 2px solid black;
+  font-size: 2em;
+  margin-left: 10px;
 }
 
 
