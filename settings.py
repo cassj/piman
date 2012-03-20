@@ -72,9 +72,9 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    ('css', "/var/www/django/piman/static/css"),
-    ('images', '/var/www/django/piman/static/images'),
-    ('js', '/var/www/django/piman/static/js')
+    ('css', os.path.join(DIRNAME, "static/css") ),
+    ('images', os.path.join(DIRNAME, "static/images") ),
+    ('js', os.path.join(DIRNAME, "static/js") )
 )
 
 # List of finder classes that know how to find static files in

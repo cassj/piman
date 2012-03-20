@@ -93,6 +93,7 @@ def project_create(request):
 
 @ajax_login_required
 def project_edit(request, project_id):
+
   if request.method == 'POST':
     form = ProjectForm(request.POST)
     if form.is_valid():
@@ -108,7 +109,7 @@ def project_edit(request, project_id):
  
   # return the html as a json object in data.html
   # possibly for debugging this should just return the html if a get req.
-  response =  HttpResponse(json.dumps(html), mimetype=u'application/json')
+  response =  HttpResponse(json.dumps({'html' : html}), mimetype=u'application/json')
   return response
   
 

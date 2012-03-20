@@ -27,27 +27,50 @@ var piman_edit = function(entity_type, id) {
 
   url =  '/' + entity_type + '/' + id + '/' + 'edit';
 
-  //alert(url);
+  alert(url);
 
+   var on_success = function(data, textStatus, XMLHttpRequest){
+                       try{
+                         if(data){
+                           if(check_authentication(data)){
+                             $("#overlay").append(data.html);
+                             //toggle vis?
+                           }else{
+                             alert("not logged in");
+                           }
+                         }                      
+                       }catch(error){
+                         $("#header").append("<h1>Error parsing JSON</h1>");
+                       }
+                    }
+   var on_error = function(XMLHttpRequest, textStatus, errorThrown){
+                     $("#header").append("<h1 class='error'>Error: " + errorThrown + "</h1>");
 
-  // submit a post request to the url with no data
-  // you should get the empty form back, unless you get json
-  $.ajax({
-    data: { },
-    datatype: 'json',
-    success: function(data, textStatus, XMLHttpRequest){
+                  }
+   /*
+   function(data, textStatus, XMLHttpRequest){
+              alert("aaaagh")
                if(data){
+                 alert("here")
                  if(check_authentication(data)){
                    $("#overlay").html(data.html);
+
                  }else{
                    // this should just redirect the top page to the login page.
                    alert("not logged in");
                  }
                }
              },
-    type: 'POST',
-    url: url
-  });
+   */
+
+  // submit a post request to the url with no data
+  // you should get the empty form back, unless you get json
+  $.ajax({
+    url: url,
+    data: {},
+  })
+  .success(on_success)
+  .error(on_error)
 }
 
 
