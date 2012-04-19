@@ -1,6 +1,4 @@
-<div id="publication_block_{{pi.id}}" class="publication_block, block">
-
-  <a href="/publications"><h1>Publications</h1></a>
+  <h1>Publications</h1>
 
     <table>
       <tr>
@@ -11,12 +9,9 @@
       </tr>
       {% for p in publications %}
       <tr>
-          <td>{{p.paper}}</td>
+          <td><span onclick="piman_edit('publication', {{p.id}})" class="ajax_link" >{{p.paper}}</span></td>
           <td>{{p.paper.journal}}</td>
           <td>{{p.paper.publication_date}}</td>
           <td>{{p.rank}}</td>
       </tr>
       {% endfor %}
-
-
-</div>

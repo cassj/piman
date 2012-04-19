@@ -1,5 +1,4 @@
-<div id="teaching_block_{{pi.id}}" class="teaching_block, block">
-  <a href="courses"><h1>Teaching Committments</h1></a>
+  <h1>Teaching Committments</h1>
 
 <!-- Still to do - flag course and module somehow if the 
      PI is an organiser. 
@@ -20,8 +19,8 @@
       </tr>
      {% for tc in teaching_commitments %}
       <tr>
-          <td>{{tc.course_module.course.name}}</td>
-          <td>{{tc.course_module.module.name}}</td>
+          <td><span onclick="piman_edit('course', {{tc.course_module.course.id}})" class="ajax_link" >{{tc.course_module.course.name}}</span></td>
+          <td><span onclick="piman_edit('module', {{tc.course_module.module.id}})" class="ajax_link" >{{tc.course_module.module.name}}</span></td>
           <td>{{tc.contact_hours}}</td>
           <td>{{tc.notes}}</td>
       </tr>
@@ -29,4 +28,3 @@
     </table>
 
 
-</div>

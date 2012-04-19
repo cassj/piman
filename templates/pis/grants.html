@@ -1,8 +1,7 @@
 {% load humanize %}
 
-<div id="grants_{{pi.id}}" class="grants_block, block">
 
-  <a href="/pis/grants"><h1>Grants</h1></a>
+  <h1>Grants</h1>
 
   <h2>Current Submissions</h2>
     <table>
@@ -20,7 +19,7 @@
       </tr>
       {% for a in submitted_applications %}
       <tr>
-          <td>{{a.submitted_grant.grant.title}}</td>
+          <td><span onclick="piman_edit('submitted_grant', {{a.submitted_grant.id}})" class="ajax_link" >{{a.submitted_grant.grant.title}}</span></td>
           <td>{{a.submitted_grant.grant.awarding_body}}</td>
           <td>{{a.submitted_grant.title}}</td>
           <td>{{a.submitted_grant.abstract}}</td>
@@ -49,7 +48,7 @@
       </tr>
      {% for a in awarded_applications %}
       <tr>
-          <td>{{a.submitted_grant.title}}</td>
+          <td><span onclick="piman_edit('submitted_grant', {{a.submitted_grant.id}})" class="ajax_link" >{{a.submitted_grant.title}}</span></td>
           <td>{{a.submitted_grant.grant.awarding_body}}</td>
           <td>{{a.submitted_grant.title}}</td>
           <td>{{a.submitted_grant.abstract}}</td>
@@ -62,4 +61,3 @@
       {% endfor %}
     </table>
 
-</div>

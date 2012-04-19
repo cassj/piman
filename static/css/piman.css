@@ -22,6 +22,7 @@ th, td{
   padding: 0.2em
 }
 
+
 /* for ajax forms */
 .error
 {
@@ -32,25 +33,81 @@ color: red;
 font-weight: bold;
 }
 
-.overlay{
-}
-
-#notifications style.cssabout{
-  background-color: #ff8080;
-  border: 3px solid #800000;
+/* popup form */
+#overlay{
   display: none;
-  padding: 20px; 
+  background: transparent url(/static/images/overlay.png) repeat top left;
+  position:fixed;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  z-index:100;
+  overflow: auto;
 }
 
-#submit{
+#overlay form{
+    position:absolute;
+    top:0px;
+    left:30%;
+    right:30%;
+    background-color:#fff;
+    color:#7F7F7F;
+    padding:20px;
+    border:2px solid #ccc;
+    -moz-border-radius: 20px;
+    -webkit-border-radius:20px;
+    -khtml-border-radius:20px;
+    -moz-box-shadow: 0 1px 5px #333;
+    -webkit-box-shadow: 0 1px 5px #333;
+    z-index:101;
+}
+
+#notifications {
+  background-color: #ffeeee;
+  display: none;
+  padding: 20px;
+  border:2px solid #ccc;
+  -moz-border-radius: 20px;
+  -webkit-border-radius:20px;
+  -khtml-border-radius:20px;
+  -moz-box-shadow: 0 1px 5px #333;
+  -webkit-box-shadow: 0 1px 5px #
+}
+
+div.fieldWrapper{ 
+  width: 550px; /*width of form rows*/
+  overflow: hidden;
+  padding: 5px 0;
+}
+
+.fieldWrapper label{ 
+  float: left;
+  width: 150px;
+  margin-right: 15px; 
+}
+
+.form_buttons{ 
+  margin-top: 5px; 
+}
+
+.submit_button{
   border: 2px solid black;
-  font-size: 2em;
-  margin-left: 10px;
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+.close_button{
+  float:right; 
+  margin: 0 0 15px 15px;;
+  cursor: pointer;
 }
 
-
-.edit_link
+.ajax_link
 {
 color:blue;
 cursor: pointer;
+}
+
+.hidden{
+display : none;
 }

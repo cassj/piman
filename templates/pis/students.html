@@ -1,4 +1,3 @@
-<div id="student_block_{{pi.id}}" class="student_block, block">
   <h1>Student Projects</h1>
     <table>
       <tr>
@@ -10,15 +9,14 @@
       </tr>
       {% for project in projects %}
       <tr>
-          <td><span onclick="piman_edit('project', {{project.id}})" class="edit_link" >{{project.name}}</span></td>
+          <td><span onclick="piman_edit('project', {{project.id}}); piman_fill_show('students_block','/pis/students_block');" class="ajax_link" >{{project.name}}</span></td>
           <td>{{project.description}}</td>
           <td>{{project.start_year}}</td>
           <td>{{project.end_year}}</td>
           <td>{% for student in project.students.all %}
-                  {{student.name}} ({{student.level}} candidate)
+                  <span onclick="piman_edit('student', {{student.id}})" class="ajax_link" >{{student.name}} ({{student.level}} candidate)</span>
               {% endfor%}
           </td>
       </tr>
       {% endfor %}
     </table>
-</div>
