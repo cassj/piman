@@ -48,9 +48,12 @@
         <label for="id_tags">Tags:</label>
         {{ form.tags }}
     </div>
+
+    <button>Not a submit button</button>
    
     <div class="form_buttons">
-        <button class="submit_button" onclick="piman_submit('project_edit_form','/project/edit/{{id}}')">Submit</button>
+        <button class="submit_button" onclick="piman_project_edit_submit({{id}})">Submit</button>
+        <!--button class="submit_button" onclick="piman_submit('project_edit_form','/project/edit/{{id}}'); return(false)">Submit</button-->
         <!--button  class="submit_button"  onclick="piman_submit('project_edit_form','/project/edit/{{id}}', function(){piman_clear_hide('overlay'); piman_fill_show('student_block','/pis/students_block')}); return false;">Submit</button-->
     </div>
 </form>

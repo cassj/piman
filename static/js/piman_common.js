@@ -103,7 +103,7 @@ function piman_clear_hide(div){
 
 
 
-
+// Why the hell aren't these just functions?
 var piman_register = function(){
   url = '/accounts/register';
   piman_overlay(url);
@@ -122,15 +122,17 @@ var piman_create = function(entity_type, id){
 }
 
 var piman_submit = function(formid, url, success, error){
+ 
 
   formid = '#' + formid;
   id = $(formid+" > .id").html();
 
+  
   if (!success){  
       success = function(data, txt, xhr){piman_send_message("Form successfully submitted " + data.html)};      
   }
   if(!error){
-      error = function(xhr, txt, err){piman_send_message("Form submission failed. " + txt, true)};
+      error = function(xhr, txt, err){piman_send_message("Form submission failed. " + err, true);};
   }
 
   $.ajax({type:'POST', 
@@ -139,7 +141,12 @@ var piman_submit = function(formid, url, success, error){
           success: success,
           error: error
          });
-  
-  return(true);
-}
 
+  piman_clear_hide('overlay');
+  
+}
+    
+piman_project_edit_submit(id){
+
+  
+}
